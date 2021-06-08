@@ -1,0 +1,1 @@
+light_type = eLightType.Point;

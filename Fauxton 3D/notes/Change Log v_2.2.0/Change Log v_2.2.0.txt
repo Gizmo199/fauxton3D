@@ -1,0 +1,16 @@
+v 2.2.0
+Nodes
+	[ADDED] World Environment Node
+	[ADDED] Point light node
+	[ADDED] Spot light node
+	
+Functions
+	[ADDED] fauxton_buffer_set_uniform_script(buffer_name_or_id, uniform_control_script)
+	[MODIFIED] draw_sprite_3d OPTIONAL parameter 'enable_lighting'
+	[MODIFIED] draw_sprite_3d_ext OPTIONAL parameter 'enable_lighting'
+	
+Shaders
+	[MODIFIED] added lighting to 'shd_default'
+	
+Fixed
+	[FIXED] fauxton_buffer_set (Would return an error)

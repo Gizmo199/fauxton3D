@@ -1,0 +1,28 @@
+This project would not be possible without the hard work, dedication, and support of these people!!
+
+								   Shortbread ( @_shortbread )
+ - For help debugging why HTML5 wouldn't work with shaders!! Also for supporting and helping me COUNTLESS times!
+ 
+ 
+						DragoniteSpam ( @DragoniteSpam | youtube.com/c/DragoniteSpam )
+ - For his amazing tutorials on lighting that helped me integrate it into this project!
+
+
+									Baiter Yamato ( @BaiterYamato )
+ - For help with testing and supporting this project!
+ 
+ 
+									 m͓̽0͓̽z͓̽z͓̽y͓̽ ( @mozzy31 )
+ - For help with testing and supporting this project!
+ 
+ 
+										  Xor ( @XorDev )
+ - For years of incredible shader tutorials and support! 
+ 
+ 
+						  TheSnidr ( @TheSnidr | youtube.com/c/TheSnidr )
+ - For continued inspiration and being the ultimate badass!
+ 
+ 
+							Logam Fornan AKA DevDwarf (@dev_dwarf)
+ - For support and inspiration for this project!!
