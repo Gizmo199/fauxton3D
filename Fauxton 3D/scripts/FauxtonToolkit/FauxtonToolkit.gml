@@ -133,7 +133,12 @@
 		///@func fauxton_sprite_set(x, y, z, xrot, yrot, zrot, xscale, yscale, zscale, face_camera)
 		if ( !_fc )
 		{
-			matrix_set(matrix_world, matrix_build(_x, _y, _z, _xr + _xr, _yr, _zr, _xs, _ys, _zs));
+			//matrix_set(matrix_world, matrix_build(_x, _y, _z, _xr + _xr, _yr, _zr, _xs, _ys, _zs));
+			var _scale = matrix_build(0, 0, 0, 0, 0, 0, _xs, -_ys, _zs);
+			var _rot = matrix_build(0, 0, 0, _xr, _yr, _zr, 1, 1, 1);
+			var _trans = matrix_build(_x, _y, _z, 0, 0, 0, 1, 1, 1);
+			var _final = matrix_multiply(matrix_multiply(_scale, _rot),_trans);
+			matrix_set(matrix_world, _final);
 		} 
 		else 
 		{
