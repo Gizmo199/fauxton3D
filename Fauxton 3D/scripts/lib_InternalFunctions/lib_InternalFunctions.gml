@@ -74,7 +74,7 @@ function __FauxtonWriteQuad(mBuff, texture, index, _x, _y, _z, color, alpha, ang
 	
 	_uvs = sprite_get_uvs(texture, index);
 	_tuvs = texture_get_uvs(sprite_get_texture(texture, index));
-
+	
 	// Get UVs
 	l = _tuvs[0];
 	t = _tuvs[1];

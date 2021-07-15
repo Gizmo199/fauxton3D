@@ -48,8 +48,7 @@ function pipeline_initiate()
 		light_direction : shader_get_uniform(shd_default, "lightDirection"),
 		light_cutoff	: shader_get_uniform(shd_default, "lightCutoffAngle")
 	}
-	show_debug_message("UNIFORM (int) 'lightTotal' :" + string(uni.light_num) );
-
+	
 	function default_world_shader_set(){
 		if ( shader_current() != shd_default ) { exit; }
 		// World environment lighting
@@ -150,7 +149,7 @@ function pipeline_initiate()
 				// Complete loading
 				if ( b.load_pos == ds_list_size(b.load_queue) )
 				{
-					show_debug_message("Buffer "+string(i)+": Succesfully Loaded! ");
+					show_debug_message("Buffer '"+string(i)+"': Succesfully Loaded! ");
 					b.loaded = true;	
 					ds_list_destroy(b.load_queue);
 					if ( b.buffer < 0 ) { buffer_delete(b.buffer); b.buffer = -1; exit; }
