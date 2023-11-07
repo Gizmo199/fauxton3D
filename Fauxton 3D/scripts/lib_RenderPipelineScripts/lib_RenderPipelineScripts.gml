@@ -13,6 +13,9 @@
 // Rendering functions
 function pipeline_initiate()
 {
+	if ( !ds_exists(RENDER_QUEUE, ds_type_list) )	RENDER_QUEUE = ds_list_create();
+	if ( !ds_exists(BUFFER_MAPS, ds_type_map) )		BUFFER_MAPS = ds_map_create();
+	
 	///@func pipeline_initiate()
 	
 	// default static buffer
@@ -210,7 +213,7 @@ function pipeline_cleanup()
 		{
 			buffer_delete(_vb.buffer); 	
 		}
-		ds_list_destroy(_vb.load_queue);
+		if ( ds_exists(_vb.load_queue, ds_type_list) ) ds_list_destroy(_vb.load_queue);
 	}
 	ds_map_destroy(BUFFER_MAPS);
 	BUFFER_MAPS = ds_map_create();

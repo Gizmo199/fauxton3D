@@ -69,7 +69,7 @@
 	function fauxton_model_texcube_destroy(_m)
 	{
 		///@func fauxton_model_texcube_destroy(model_id)
-		vertex_delete_buffer(RENDER_QUEUE[| _m].model_id);	
+		if ( RENDER_QUEUE[| _m] != undefined ) vertex_delete_buffer(RENDER_QUEUE[| _m].model_id);	
 	}
 	function fauxton_model_add_static(model_id, buffer_name) 
 	{
