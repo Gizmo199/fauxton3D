@@ -72,34 +72,35 @@ float evaluate_cone_light(vec3 world_position, vec3 world_normal, vec3 light_dir
 	// Return attenuation by returning light
 	return lightAtt * lDiff;
 }
-
 void main()
 {
-	vec4 col = texture2D( gm_BaseTexture, v_vTexcoord ) * v_vColour;	
-	
-	// Alpha
-	if ( col.a < 0.05 ) { discard; }
-	
-	// Diffuse and ambient
-	float nDot = max(dot(v_vNormal, normalize(sun_pos)), 0.);
-	col.rgb *= ( ambient_color ) + ( sun_color * sun_intensity ) * nDot;
-	
-	// Spot & Point lights
-	if ( lightTotal > 0. ){
-		float eval = 0.;
-		for ( int i=0; i<64; i++ )
-		{
-			if ( float(i) > lightTotal ) { break; }
-			
-			if ( lightIsCone[i] == 1. ) {
-				eval = evaluate_cone_light(v_vWorldPosition, v_vNormal, lightDirection[i], lightCutoffAngle[i], lightPos[i], lightRange[i]);
-			} else {
-				eval = evaluate_point_light(v_vWorldPosition, v_vNormal, lightPos[i], lightRange[i]);
-			}
-			col += eval * vec4( min( lightColor[i], 1. ), 1. );
-		}
-	}
-	
-	// Final color
-	gl_FragColor = min( col, vec4(1.) );
+    vec4 col = texture2D( gm_BaseTexture, v_vTexcoord ) * v_vColour;
+ 
+    // Alpha
+    if ( col.a < 0.05 ) { discard; }
+ 
+    // Diffuse and ambient
+    float nDot = max(dot(v_vNormal, normalize(sun_pos)), 0.);
+    col.rgb *= ( ambient_color ) + ( sun_color * sun_intensity ) * nDot;
+ 
+    // Spot & Point lights
+    vec3 col_add = vec3(0);
+    if ( lightTotal > 0. ){
+        float eval = 0.;
+        for ( int i=0; i<64; i++ )
+        {
+            if ( float(i) > lightTotal ) { break; }
+         
+            if ( lightIsCone[i] == 1. ) {
+                eval = evaluate_cone_light(v_vWorldPosition, v_vNormal, lightDirection[i], lightCutoffAngle[i], lightPos[i], lightRange[i]);
+            } else {
+                eval = evaluate_point_light(v_vWorldPosition, v_vNormal, lightPos[i], lightRange[i]);
+            }
+            col_add += eval * lightColor[i];
+        }
+    }
+ 
+    // Final color
+    col_add /= max(lightTotal, 1.);
+    gl_FragColor = vec4(col.rgb + col_add, col.a);
 }
